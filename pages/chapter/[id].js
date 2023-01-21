@@ -36,24 +36,25 @@ const Chapter = ({data}) => {
             <span className='text-white '> سورة</span>
         </div>
         <img className='object-contain mx-auto' src='https://www.shutterstock.com/shutterstock/videos/1043712793/thumb/11.jpg?ip=x480' />
-
-        <div className=' mx-auto flex lg:max-w-[80%] items-center justify-center'>
-            <div className=''>
-                {data?.ayahs?.map((verse, index) => (
-                    <div key={verse} className="flex gap-2 my-2 h-[200px] border-b-2 border-cyan-400 w-[50vw]">
-                        <div>
-                            <p className='text-white text-2xl'>{data?.chapter}:{index + 1}</p> 
-                        </div>
-                        <p className='text-white text-2xl flex items-center mb-12'>{verse}</p>
-                    </div>
-                ))}
+        <div className='flex flex-row items-center justify-center'>
+            <div className='hidden lg:flex-col h-full w-fit relative left-[8%]'>
+                {data?.signs.filter((item, index) => index % 2 === 0).map((item, index) => (
+                    <div className='text-white text-2xl h-[210px] my-1' key={index}>{index + 1}</div>
+                    ))}
             </div>
-            <div className=' '>
-                {data?.ar?.map((verse, index) => (
-                    <div key={verse} className=" h-[200px] my-2 border-b-2 border-cyan-400">
-                        <p className='text-white text-2xl'>{verse}</p>
-                    </div>
-                ))}
+            <div className=' mx-auto lg:max-w-[80%] lg:grid grid-cols-2 flex-1'>
+                    {data?.signs?.map((verse, index) => (
+                        <div key={verse} className=" gap-2 w-full my-2 h-[200px] border-b-2 border-cyan-400 ">
+                            <p className='text-white text-2xl flex items-center mb-12'>{verse}</p>
+                        </div>
+                    ))}
+                {/* <div className=' bg-pink-200'>
+                    {data?.ar?.map((verse, index) => (
+                        <div key={verse} className="h-[400px] lg:h-[200px] my-2 border-b-2 border-cyan-400">
+                            <p className='text-white text-2xl'>{verse}</p>
+                        </div>
+                    ))}
+                </div> */}
             </div>
         </div>
     
@@ -87,15 +88,15 @@ export const getStaticProps = async (context) => {
 
     const data = await db.collection("en").doc(`chapter${id}`).get();
     const surah = data?.data();
-    // for (let i =0; i < surah?.ayahs?.length; i++) {
-    //     signs?.push(surah?.ayahs[i])
-    //     signs?.push(surah?.ar[i])
-    // }
+    for (let i =0; i < surah?.ayahs?.length; i++) {
+        signs?.push(surah?.ayahs[i])
+        signs?.push(surah?.ar[i])
+    }
 
     
     return {
         props: {
-            data: surah
+            data: {chapter: surah?.chapter, signs}
         }
     }
 }
