@@ -4,37 +4,6 @@ import ar from "../data/ar";
 import chapters from "../data/chapters";
 export default function Home({data}) {
 
-  // const handleAddChapters = async () => {
-  //   const response = await fetch('http://localhost:3000/api/addChapters', {
-  //     method: 'POST',
-  //     header: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(chapters)
-  //   })
-  //   const res = await response.json();
-  //   alert(res)
-  // }
-
-//   const handleSubmitQuran = async () => {
-
-//     const quran = Object?.values(ar)?.map((i) =>{
-//         const w = i?.map((y) => y?.chapter)
-//         const ar = i?.map((lo) => lo?.text)
-//         const wow = i?.filter(({chapter}, index) => !w?.includes(chapter, index + 1))?.map((h) => h.chapter )
-//         return {chapter:wow[0], ar}
-//     })
-//     // console.log(quran?.slice(10,114))
-//     const response = await fetch('http://localhost:3000/api/addQuran', {
-//         method: 'POST',
-//         header: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(quran?.slice(10,114))
-//     })
-//     const res = await response.json();
-//     alert(res)
-// }
 
   return (
       <div className="p-3">

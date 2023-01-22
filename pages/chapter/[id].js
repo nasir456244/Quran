@@ -1,32 +1,10 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import ar from "../../data/ar"
 import { db } from '../../lib/firebase-admin'
 
 const Chapter = ({data}) => {
     const router = useRouter()
     const { name } = router.query;
-
-    // const handleSubmitQuran = async () => {
-
-    //     const quran = Object?.values(ar)?.map((i) =>{
-    //         const w = i?.map((y) => y?.chapter)
-    //         const ar = i?.map((lo) => lo?.text)
-    //         const wow = i?.filter(({chapter}, index) => !w?.includes(chapter, index + 1))?.map((h) => h.chapter )
-    //         return {chapter:wow[0], ar}
-    //     })
-
-    //     console.log(quran)
-    //     const response = await fetch('http://localhost:3000/api/addQuran', {
-    //         method: 'POST',
-    //         header: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(quran)
-    //     })
-    //     const res = await response.json();
-    //     alert(res)
-    // }
 
 
   return (
@@ -48,13 +26,6 @@ const Chapter = ({data}) => {
                             <p className='text-white text-2xl flex items-center mb-12'>{verse}</p>
                         </div>
                     ))}
-                {/* <div className=' bg-pink-200'>
-                    {data?.ar?.map((verse, index) => (
-                        <div key={verse} className="h-[400px] lg:h-[200px] my-2 border-b-2 border-cyan-400">
-                            <p className='text-white text-2xl'>{verse}</p>
-                        </div>
-                    ))}
-                </div> */}
             </div>
         </div>
     
