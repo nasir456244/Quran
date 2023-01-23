@@ -6,7 +6,6 @@ const Chapter = ({data}) => {
     const router = useRouter()
     const { name } = router.query;
 
-
   return (
     <div>
         <div className='flex items-center justify-center relative top-14 text-[50px]'>
@@ -14,19 +13,18 @@ const Chapter = ({data}) => {
             <span className='text-white '> سورة</span>
         </div>
         <img className='object-contain mx-auto' src='https://www.shutterstock.com/shutterstock/videos/1043712793/thumb/11.jpg?ip=x480' />
-        <div className='flex flex-row items-center justify-center'>
-            <div className='hidden lg:flex-col h-full w-fit relative left-[8%]'>
-                {data?.signs.filter((item, index) => index % 2 === 0).map((item, index) => (
-                    <div className='text-white text-2xl h-[210px] my-1' key={index}>{index + 1}</div>
-                    ))}
-            </div>
-            <div className=' mx-auto lg:max-w-[80%] lg:grid grid-cols-2 flex-1'>
-                    {data?.signs?.map((verse, index) => (
-                        <div key={verse} className=" gap-2 w-full my-2 h-[200px] border-b-2 border-cyan-400 ">
-                            <p className='text-white text-2xl flex items-center mb-12'>{verse}</p>
-                        </div>
-                    ))}
-            </div>
+
+        <div className=' mx-auto lg:max-w-[80%] grid lg:grid-cols-2 grid-cols-1'>
+                {data?.signs?.map((verse, index) => 
+
+                    <div key={verse} className="gap-20 w-full my-2 h-[200px] flex flex-row items-center border-b-2 border-cyan-200">
+                        <span className='text-white text-2xl'>{verse?.verse}</span>
+                        <p className='text-white text-2xl h-full flex flex-col justify-end pb-10'>{verse?.text}</p>
+                    </div>
+                    
+                )}
+
+
         </div>
     
     </div>
@@ -54,20 +52,23 @@ export const getStaticPaths = async () => {
 
 
 export const getStaticProps = async (context) => {
-    const id = context.params.id;
+    const id = context?.params?.id;
     const signs = [];
+    const document = `chapter${id}`
 
-    const data = await db.collection("en").doc(`chapter${id}`).get();
-    const surah = data?.data();
-    for (let i =0; i < surah?.ayahs?.length; i++) {
-        signs?.push(surah?.ayahs[i])
-        signs?.push(surah?.ar[i])
+
+    const data1 = await db.collection("en").doc(document).get();
+    const data2 = await db.collection("ar").doc(document).get();
+    for (let i =0; i < (Object?.keys(data1?.data())?.length - 1); i++) {
+        signs?.push(data1?.data()[i])
+        signs?.push(data2?.data()[i])
     }
+
 
     
     return {
         props: {
-            data: {chapter: surah?.chapter, signs}
+            data: {chapter: data2?.data()?.chapter, signs}
         }
     }
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import ar from "../data/ar";
-import chapters from "../data/chapters";
+
 export default function Home({data}) {
+
+ 
 
 
   return (
@@ -31,7 +31,6 @@ export default function Home({data}) {
             </Link>
           ))}
       </div>
-
 
     </div> 
   )

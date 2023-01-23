@@ -2,8 +2,8 @@ import { db } from '../../lib/firebase-admin'
 export default async function handler(req, res) {
     try {
         
-        const quran = JSON.parse(req.body)
-        await quran?.map((qur) => db.collection('en').doc(`chapter${qur?.chapter}`).update({ar: qur?.ar}))
+        const quran = req.body
+        Object?.values(quran)?.map(async (qur) => await db.collection('ar').doc(`chapter${qur?.chapter}`).set(qur))
         
         res.status(201).send('Succesfully added quran')
     }
