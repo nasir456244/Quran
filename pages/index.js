@@ -39,3 +39,14 @@ export default index
 
 
 
+export const getStaticProps = async () => {
+  const response = await fetch("http://localhost:3000/api/quran");
+  const data = await response.json()
+
+
+  return {
+    props: {
+      data
+    }
+  }
+}
