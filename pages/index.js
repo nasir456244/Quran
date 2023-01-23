@@ -38,7 +38,7 @@ export default index;
 
 
 export async function getStaticProps() {
-  const response = await fetch("http://localhost:3000/api/quran");
+  const response = await fetch("https://quran-iota.vercel.app/api/quran");
   const data = await response.json()
 
   return {
