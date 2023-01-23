@@ -43,7 +43,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      data
+      data: data ? data : null
     }
   }
 }
