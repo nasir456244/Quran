@@ -1,10 +1,9 @@
-import Link from "next/link";
+import Link from 'next/link'
+import React from 'react'
 
-export default function Home({data}) {
-
-
+const index = ({data}) => {
   return (
-      <div className="p-3">
+    <div className="p-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 lg:w-[80%] mx-auto gap-4">
 
           {data?.map((quran) => (
@@ -35,15 +34,8 @@ export default function Home({data}) {
   )
 }
 
+export default index
 
 
-export const getStaticProps = async () => {
-  const response = await fetch('http://localhost:3000/api/quran'); 
-  const data = await response?.json()
 
-  return {
-    props: {
-      data: data ? data : null
-    }
-  }
-}
+
