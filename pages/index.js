@@ -2,8 +2,6 @@ import Link from "next/link";
 
 export default function Home({data}) {
 
- 
-
 
   return (
       <div className="p-3">
@@ -31,6 +29,7 @@ export default function Home({data}) {
             </Link>
           ))}
       </div>
+
 
     </div> 
   )

@@ -12,12 +12,12 @@ const Chapter = ({data}) => {
             <h1 className='text-white'>{name}</h1>
             <span className='text-white '> سورة</span>
         </div>
-        <img className='object-contain mx-auto' src='https://www.shutterstock.com/shutterstock/videos/1043712793/thumb/11.jpg?ip=x480' />
+        { data?.chapter !== 9 && <img className='object-contain mx-auto' src='https://www.shutterstock.com/shutterstock/videos/1043712793/thumb/11.jpg?ip=x480' />}
 
-        <div className=' mx-auto lg:max-w-[80%] grid lg:grid-cols-2 grid-cols-1'>
+        <div className=' mx-auto lg:max-w-[80%] grid lg:grid-cols-2 grid-cols-1 mt-10'>
                 {data?.signs?.map((verse, index) => 
 
-                    <div key={verse} className="gap-20 w-full my-2 h-[200px] flex flex-row items-center border-b-2 border-cyan-200">
+                    <div key={verse} className="gap-20 w-full my-2 min-h-[200px] flex flex-row items-center border-b-2 border-cyan-200">
                         <span className='text-white text-2xl'>{verse?.verse}</span>
                         <p className='text-white text-2xl h-full flex flex-col justify-end pb-10'>{verse?.text}</p>
                     </div>

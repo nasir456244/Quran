@@ -3,7 +3,8 @@ export default async function handler(req, res) {
     try {
         
         const quran = req.body
-        Object?.values(quran)?.map(async (qur) => await db.collection('ar').doc(`chapter${qur?.chapter}`).set(qur))
+        console.log(quran)
+        await db.collection('en').doc('chapter1').set(quran)
         
         res.status(201).send('Succesfully added quran')
     }
